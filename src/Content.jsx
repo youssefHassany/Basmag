@@ -7,9 +7,12 @@ import FlashCards from "./pages/flashcards/FlashCards";
 import Quiz from "./pages/quiz/Quiz";
 import { Route, Routes } from "react-router-dom";
 
-const Content = () => {
+const Content = ({ setNavShown }) => {
   return (
-    <section className="p-5">
+    <section
+      onClick={() => setNavShown(false)}
+      className="p-5 w-full min-h-screen"
+    >
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/todo" element={<Todo />} />

@@ -19,8 +19,6 @@ function App() {
     });
   }, []);
 
-  console.log(user);
-
   if (!isAuth) {
     return (
       <div>
@@ -33,8 +31,12 @@ function App() {
     <main className="max-w-screen min-h-screen bg-gray-200 overflow-x-hidden">
       <Header navShown={navShown} setNavShown={setNavShown} />
       <div className="flex">
-        <Nav setIsAuth={setIsAuth} navShown={navShown} />
-        <Content />
+        <Nav
+          setIsAuth={setIsAuth}
+          setNavShown={setNavShown}
+          navShown={navShown}
+        />
+        <Content setNavShown={setNavShown} />
       </div>
     </main>
   );

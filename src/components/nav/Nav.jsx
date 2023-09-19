@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 import Cookies from "universal-cookie";
 const myCookies = new Cookies();
 
-const Nav = ({ setIsAuth, navShown }) => {
+const Nav = ({ setIsAuth, setNavShown, navShown }) => {
   const logout = async () => {
     try {
       await signOut(auth);
@@ -25,6 +25,7 @@ const Nav = ({ setIsAuth, navShown }) => {
   };
   return (
     <nav
+      onClick={() => setNavShown(false)}
       className={`fixed md:relative top-0 w-3/4 md:w-1/6 h-screen p-4 shadow-xl flex flex-col justify-center bg-white ${
         navShown ? "translate-x-0" : "-translate-x-full"
       } md:translate-x-0 duration-300`}

@@ -5,12 +5,14 @@ import { BiMenu } from "react-icons/bi";
 
 const Header = ({ navShown, setNavShown }) => {
   return (
-    <header className="w-screen top-0 sticky py-2 px-4 flex justify-between bg-white z-50">
+    <header className="w-screen top-0 sticky py-2 px-7 flex justify-between items-center bg-white z-50">
       <Link to="/" className="text-2xl font-bold tracking-wider">
         BASMAG
       </Link>
+
+      {/* user */}
       <div>
-        <div className="py-1 px-3 bg-gray-200 rounded-xl font-medium inline-block">
+        <div className="py-1 px-3 bg-gray-200 rounded-full font-medium inline-block">
           {auth.currentUser ? (
             <div className="flex justify-between items-center">
               <img
