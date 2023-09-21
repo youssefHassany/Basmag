@@ -28,7 +28,7 @@ function App() {
   }
 
   return (
-    <main className="max-w-screen min-h-screen bg-gray-200 overflow-x-hidden">
+    <main className="max-w-screen h-screen bg-gray-200 overflow-hidden">
       <Header navShown={navShown} setNavShown={setNavShown} />
       <div className="flex">
         <Nav

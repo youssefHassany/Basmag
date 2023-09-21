@@ -33,13 +33,13 @@ const Nav = ({ setIsAuth, setNavShown, navShown }) => {
       <ul>
         <NavList icon={<BiHomeAlt />} pageTitle={"Home"} pagePath={"/"} />
 
-        <NavList icon={<LuListTodo />} pageTitle={"Todo"} pagePath={"/todo"} />
-
         <NavList
           icon={<BiSolidDashboard />}
           pageTitle={"Dashboard"}
           pagePath={"/dashboard"}
         />
+
+        <NavList icon={<LuListTodo />} pageTitle={"Todo"} pagePath={"/todo"} />
 
         <NavList
           icon={<PiCardsBold />}
