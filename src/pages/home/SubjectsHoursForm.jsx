@@ -1,10 +1,48 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../configuration/firebase-config";
+import { DataContext } from "../../Content";
 
-const SubjectsHoursForm = () => {
+const SubjectsHoursForm = ({ hoursSpent, docID }) => {
+  const { getSubjectsData } = useContext(DataContext);
   const [hrs, setHrs] = useState("");
+
+  const addHrs = async () => {
+    try {
+      const subDoc = doc(db, "subjects", docID);
+      await updateDoc(subDoc, { hoursSpent: Number(hoursSpent) + Number(hrs) });
+      getSubjectsData();
+      setHrs("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const decreaseHrs = async () => {
+    try {
+      const subDoc = doc(db, "subjects", docID);
+      const newHoursSpent = Number(hoursSpent) - Number(hrs);
+      if (newHoursSpent < 0) {
+        await updateDoc(subDoc, { hoursSpent: 0 });
+      } else {
+        await updateDoc(subDoc, { hoursSpent: newHoursSpent });
+      }
+      getSubjectsData();
+      setHrs("");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
-    <div>
-      <form className="flex justify-between items-center gap-2 pt-2 border-t-2 ">
+    <div className="flex items-center border-t-2 md:border-l-2 md:border-t-0">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          addHrs();
+        }}
+        className="flex justify-between items-center gap-2 p-2 h-full"
+      >
         <input
           type="number"
           placeholder="hours"
@@ -19,13 +57,13 @@ const SubjectsHoursForm = () => {
         >
           +
         </button>
-        <button className="w-9 h-9 flex items-center justify-center rounded bg-red-500 font-bold text-xl text-gray-100">
-          -
-        </button>
-        {/* <button className="px-3 py-1 rounded bg-gray-400 ml-2 font-bold">
-          C
-        </button> */}
       </form>
+      <button
+        onClick={decreaseHrs}
+        className="w-9 h-9 flex items-center justify-center rounded bg-red-500 font-bold text-xl text-gray-100"
+      >
+        -
+      </button>
     </div>
   );
 };

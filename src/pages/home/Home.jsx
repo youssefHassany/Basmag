@@ -4,6 +4,7 @@ import Subject from "./Subject";
 import AddSubjectForm from "./AddSubjectForm";
 import { DataContext } from "../../Content";
 import { auth } from "../../configuration/firebase-config";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const { subjects } = useContext(DataContext);
@@ -23,14 +24,22 @@ const Home = () => {
   }, [subjects]);
 
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto place-items-center">
+    <div className="w-full mx-auto">
       {userSubjects.length > 0 &&
         userSubjects.map((subject, idx) => (
-          <Subject
-            subName={subject.subName}
-            hoursSpent={subject.hoursSpent}
+          <motion.span
             key={idx}
-          />
+            transition={{ delay: 0.3 * idx }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+          >
+            <Subject
+              subName={subject.subName}
+              hoursSpent={subject.hoursSpent}
+              docID={subject.id}
+            />
+          </motion.span>
         ))}
       <AddSubject setFormIsVisible={setFormIsVisible} />
       <AddSubjectForm

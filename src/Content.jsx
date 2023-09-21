@@ -44,7 +44,12 @@ const Content = ({ setNavShown }) => {
       className="p-5 w-full min-h-screen"
     >
       <DataContext.Provider
-        value={{ subjects, setSubjects, subjectsDataCollectionRef }}
+        value={{
+          subjects,
+          setSubjects,
+          subjectsDataCollectionRef,
+          getSubjectsData,
+        }}
       >
         <Routes>
           <Route path="/" element={<Home />} />

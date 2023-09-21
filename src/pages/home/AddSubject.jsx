@@ -1,6 +1,6 @@
 const AddSubject = ({ setFormIsVisible }) => {
   return (
-    <div className=" h-44 w-64 rounded-3xl bg-white shadow-xl flex flex-col justify-center items-center gap-5">
+    <div className=" h-44 w-64 mx-auto rounded-3xl bg-white shadow-xl flex flex-col justify-center items-center gap-5">
       <p className="text-xl font-medium">Add Subject</p>
       <button
         onClick={() => setFormIsVisible(true)}

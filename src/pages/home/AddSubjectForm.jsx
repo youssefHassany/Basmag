@@ -33,7 +33,7 @@ const AddSubjectForm = ({ formIsVisible, setFormIsVisible }) => {
   };
   return (
     <div
-      className={`fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-60 flex items-center justify-center ${
+      className={`fixed top-0 left-0 z-50 w-screen h-screen bg-black bg-opacity-60 flex items-center justify-center ${
         formIsVisible ? "" : "hidden"
       }`}
     >
@@ -43,7 +43,7 @@ const AddSubjectForm = ({ formIsVisible, setFormIsVisible }) => {
       >
         <button
           onClick={() => setFormIsVisible(false)}
-          className="absolute top-0 right-0 px-4 py-2 text-black font-bold bg-gray-400 rounded-full translate-x-2 -translate-y-2"
+          className="absolute top-0 right-0 px-4 py-2 text-black font-bold bg-gray-300 rounded-full translate-x-2 -translate-y-2"
         >
           X
         </button>
