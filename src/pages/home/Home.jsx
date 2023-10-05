@@ -5,6 +5,7 @@ import AddSubjectForm from "./AddSubjectForm";
 import { DataContext } from "../../Content";
 import { auth } from "../../configuration/firebase-config";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
   const { subjects } = useContext(DataContext);
@@ -46,6 +47,7 @@ const Home = () => {
         formIsVisible={formIsVisible}
         setFormIsVisible={setFormIsVisible}
       />
+      <ToastContainer />
     </div>
   );
 };

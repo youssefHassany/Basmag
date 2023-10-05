@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../configuration/firebase-config";
 import { DataContext } from "../../Content";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SubjectsHoursForm = ({ hoursSpent, docID }) => {
   const { getSubjectsData } = useContext(DataContext);
@@ -13,6 +15,7 @@ const SubjectsHoursForm = ({ hoursSpent, docID }) => {
       await updateDoc(subDoc, { hoursSpent: Number(hoursSpent) + Number(hrs) });
       getSubjectsData();
       setHrs("");
+      toast.success("Hours Added");
     } catch (err) {
       console.error(err);
     }
@@ -29,6 +32,7 @@ const SubjectsHoursForm = ({ hoursSpent, docID }) => {
       }
       getSubjectsData();
       setHrs("");
+      toast.success("Hours Reduced");
     } catch (err) {
       console.error(err);
     }
@@ -53,7 +57,7 @@ const SubjectsHoursForm = ({ hoursSpent, docID }) => {
         />
         <button
           type="submit"
-          className="w-9 h-9 flex items-center justify-center rounded bg-emerald-500 font-bold text-xl text-gray-100"
+          className="w-9 h-9 flex items-center justify-center rounded bg-indigo-500 font-bold text-xl text-gray-100"
         >
           +
         </button>

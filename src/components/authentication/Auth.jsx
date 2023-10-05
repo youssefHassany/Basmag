@@ -21,7 +21,7 @@ const Auth = ({ setIsAuth }) => {
 
   return (
     <section className="w-screen h-screen flex items-center justify-center bg-gradient-to-r from-cyan-500 to-blue-500">
-      <div className="w-96 h-96 p-3 rounded bg-gray-300 bg-opacity-70 shadow-lg flex flex-col items-center justify-evenly">
+      <div className="w-96 h-96 p-3 rounded-2xl bg-gray-300 bg-opacity-50 shadow-lg flex flex-col items-center justify-evenly">
         <img src={logo} className="w-48" />
         <h1 className="text-2xl font-bold">Welcome To Busmug!</h1>
         {/* <h3 className="text-lg">Sign In To Join Us</h3> */}
