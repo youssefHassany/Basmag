@@ -15,6 +15,7 @@ const Todo = () => {
       const currentUserTodos = allTodos.docs
         .map((doc) => ({
           ...doc.data(),
+          id: doc.id,
         }))
         .filter((todo) => todo.userID == auth?.currentUser?.uid);
       setTodos(currentUserTodos);

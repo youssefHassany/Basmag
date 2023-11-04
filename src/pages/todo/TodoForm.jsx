@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const TodoForm = ({ todos, setTodos }) => {
   const [todoInp, setTodoInp] = useState("");
-  const [selectedColor, setSelectedColor] = useState("bg-amber-300");
+  const [selectedColor, setSelectedColor] = useState("bg-amber-500");
 
   const addTodo = async (e) => {
     e.preventDefault();
