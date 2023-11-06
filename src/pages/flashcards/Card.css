@@ -1,12 +1,14 @@
 * {
   box-sizing: border-box;
 }
-
+:root {
+  --card-color: #4f46e5;
+}
 .card {
   width: 300px;
   height: 200px;
   padding: 5px;
-  border: #0891b2 5px solid;
+  border: var(--card-color) 5px solid;
   border-radius: 4px;
   text-align: center;
   perspective: 1000px; /* Add perspective to the container */
@@ -31,12 +33,12 @@
   align-items: center;
 }
 .card-front {
-  background-color: #0891b2;
+  background-color: var(--card-color);
   transform: rotateY(0deg); /* Initial front-facing state */
   color: #fff;
 }
 .card-back {
-  background-color: #bbb;
+  background-color: #818cf8;
   transform: rotateY(180deg); /* Initial back-facing state */
 }
 .card:hover .card-content {

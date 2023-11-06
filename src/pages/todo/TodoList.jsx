@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../configuration/firebase-config";
+import { motion } from "framer-motion";
 
 const TodoList = ({ todos }) => {
   // Assuming initialFinishedState is a piece of state that holds the initial checkbox state
@@ -29,8 +30,12 @@ const TodoList = ({ todos }) => {
     <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center gap-3">
       {todos ? (
         todos.map((todo, idx) => (
-          <div
+          <motion.div
             key={idx}
+            transition={{ delay: 0.3 * idx }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
             className={`w-full h-full p-4 font-medium text-lg text-center text-white rounded-lg ${
               todo.bg
             } flex justify-between items-center ${
@@ -43,7 +48,7 @@ const TodoList = ({ todos }) => {
               checked={todo.finished}
               onChange={() => checkTodo(todo)}
             />
-          </div>
+          </motion.div>
         ))
       ) : (
         <p>No Todos Yet..</p>

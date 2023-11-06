@@ -5,6 +5,7 @@ import { DataContext } from "../../Content";
 import { auth } from "../../configuration/firebase-config";
 import { useSort } from "../../hooks/useSort";
 import Loader from "../../components/loader/Loader";
+import { motion } from "framer-motion";
 
 const Dashboard = () => {
   const { subjects } = useContext(DataContext);
@@ -59,12 +60,16 @@ const Dashboard = () => {
             Most Studied Subjects
           </h3>
           {sortedUserSubjects.map((sub, idx) => (
-            <p
+            <motion.p
+              transition={{ delay: 0.3 * idx }}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
               className="text-2xl font-medium my-2 p-2 border-l-4 border-indigo-600 bg-gray-300"
               key={idx}
             >
               {idx + 1}. {sub.subName}: {sub.hoursSpent} Hours
-            </p>
+            </motion.p>
           ))}
         </div>
 
