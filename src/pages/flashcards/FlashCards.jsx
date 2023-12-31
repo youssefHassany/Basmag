@@ -37,21 +37,25 @@ const FlashCards = () => {
       <CardForm cardInfos={cardInfos} setCardInfos={setCardInfos} />
 
       <div className="flex items-center justify-center flex-wrap gap-3">
-        {cardInfos.map((card, idx) => (
-          <motion.span
-            key={idx}
-            transition={{ delay: 0.3 * idx }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-          >
-            <Card
-              question={card.question}
-              answer={card.answer}
-              cardID={card.id}
-            />
-          </motion.span>
-        ))}
+        {cardInfos.length > 0 ? (
+          cardInfos.map((card, idx) => (
+            <motion.span
+              key={idx}
+              transition={{ delay: 0.3 * idx }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+            >
+              <Card
+                question={card.question}
+                answer={card.answer}
+                cardID={card.id}
+              />
+            </motion.span>
+          ))
+        ) : (
+          <p className="font-medium text-2xl">No Flashcards Added...</p>
+        )}
       </div>
     </div>
   );

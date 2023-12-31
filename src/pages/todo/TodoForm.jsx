@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 const TodoForm = ({ todos, setTodos }) => {
   const [todoInp, setTodoInp] = useState("");
+  const [details, setDetails] = useState("");
   const [selectedColor, setSelectedColor] = useState("bg-amber-500");
 
   const addTodo = async (e) => {
@@ -13,6 +14,7 @@ const TodoForm = ({ todos, setTodos }) => {
     try {
       const todoObj = {
         title: todoInp,
+        details: details,
         finished: false,
         bg: selectedColor,
         userID: auth?.currentUser?.uid,
@@ -31,15 +33,23 @@ const TodoForm = ({ todos, setTodos }) => {
   return (
     <form
       onSubmit={(e) => addTodo(e)}
-      className="w-10/12 md:w-[500px] bg-white rounded-xl shadow p-4 mx-auto my-5 flex flex-col md:flex-row items-center justify-between gap-3"
+      className="w-10/12 md:w-[500px] bg-white rounded-xl shadow p-4 mx-auto my-5 flex flex-col items-center justify-between gap-3"
     >
       <input
         required
         type="text"
-        placeholder="Add Todo..."
+        placeholder="Todo Title..."
         className="border-2 border-black rounded p-2"
         value={todoInp}
         onChange={(e) => setTodoInp(e.target.value)}
+      />
+
+      <input
+        type="text"
+        placeholder="Details..."
+        className="border-2 border-black rounded p-2"
+        value={details}
+        onChange={(e) => setDetails(e.target.value)}
       />
 
       <select

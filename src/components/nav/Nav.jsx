@@ -47,11 +47,11 @@ const Nav = ({ setIsAuth, setNavShown, navShown }) => {
           pagePath={"/flashcards"}
         />
 
-        <NavList
+        {/* <NavList
           icon={<MdOutlineQuiz />}
           pageTitle={"Quiz"}
           pagePath={"/quiz"}
-        />
+        /> */}
 
         <li className="my-3">
           <button
